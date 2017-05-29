@@ -8,6 +8,7 @@ class BlackjackHand {
 		this.busted = false
 
 		this.values = []
+		this.bestValue
 		this.evaluateHand()
 	}
 
@@ -41,6 +42,7 @@ class BlackjackHand {
 			this.values.push(sum - i*10)
 		}
 		this.checkforBust()
+		this.getBestValue()
 	}
 
 	checkforBust() {
@@ -51,6 +53,16 @@ class BlackjackHand {
 			}
 		})
 		this.busted = busted
+	}
+
+	getBestValue() {
+		var best = 0
+		for(var i = 0; i < this.values.length; i++) {
+			if(this.values[i] < 22 && this.values[i] > best) {
+				best = this.values[i]
+			}
+		}
+		this.bestValue = best
 	}
 
 }
