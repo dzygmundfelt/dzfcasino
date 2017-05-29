@@ -1,0 +1,24 @@
+{
+  "name": "dzfcasino",
+  "authors": [
+    "Dan Zygmund-Felt <d.zygmund.felt@gmail.com>"
+  ],
+  "description": "card games and such",
+  "main": "main.js",
+  "keywords": [
+    "casino",
+    "blackjack"
+  ],
+  "license": "MIT",
+  "homepage": "tbd",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "jasmine-core": "jasmine#^2.6.2"
+  }
+}
