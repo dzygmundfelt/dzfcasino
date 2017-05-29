@@ -1,8 +1,9 @@
 class BlackjackGame {
-	constructor() {
+	constructor(ante) {
 		this.deck
 		this.players = []
 		this.dealerHand
+		this.ante = ante
 	}
 
 	addPlayer(player) {
@@ -12,6 +13,8 @@ class BlackjackGame {
 	playRound() {
 		this.deck = new Deck()
 		this.dealCards()
+		this.action()
+		this.resolve()
 	}
 
 	dealCards() {
@@ -23,8 +26,25 @@ class BlackjackGame {
 
 	action() {
 		this.players.forEach(function(player) {
-			playerChoice()
+			while(player.playerChoice() === 'hit') {
+				player.hand.hit(this.deck.dealCard())
+			}
 		})
 		dealerAction()
 	}
+
+	dealerAction() {
+		while(dealerHand.bestValue < 17) {
+			dealerHand.hit(this.deck.dealCard())
+		}
+	}
+
+	resolve() {
+		this.players.forEach(function(player) {
+			if(!player.hand.busted && (dealerHand.busted || player.hand.bestValue > dealerHand.bestValue)) {
+				player.payOut(this.ante*2)
+			} 
+		})
+	}
+
 }
