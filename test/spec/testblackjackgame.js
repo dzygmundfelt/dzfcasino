@@ -27,6 +27,6 @@ describe("blackjackgame", function() {
 		game.dealerHand = new BlackjackHand(new Card('7','SPADES'), new Card('9','CLUBS'))
 		game.dealerAction()
 
-		expect(game.dealerHand.cards.length).toBe(3)
+		expect(game.dealerHand.cards.length).toBeGreaterThan(2)
 	});
 });
