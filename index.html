@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+
+    <!-- Bootstrap minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+
+    <link href="./style.css" type="text/css" rel="stylesheet">
+    <title>DZF Casino</title>
+</head>
+<body>
+    <header class="main-header group">
+        <div class="title"></div>
+    </header>
+
+    <h1>Blackjack</h1>
+
+    <section id="menu">
+      <ul>
+        
+        <li><button type="button" class="btn btn-primary" onclick="oddNumbers()">Hit</button></li>
+        <li><button type="button" class="btn btn-primary" onclick="squares()">Stay</button></li>
+      </ul>
+    </section>
+
+    <section id="main">
+        <div class="user-area">
+        <div id="money"></div>
+        <div id="user-buttons" class="controls">
+        <input type="button" id="playgame" value = "Play Game" onclick="playOnePersonGame()">
+        <input type="button" id="hit" value="Hit">
+        <input type="button" id="stand" value="Stand">
+        <input type="button" id="replay" value="Play Again">
+        </div>
+        <div class="score-parent">
+            <p>Score</p>
+                <div id="user-score"class="score">
+                </div>
+            </div>
+        <div id="user-hand" class="hand">
+        <h2>User Hand</h2>
+        </div>
+        </div>
+        <div class="dealer-area">
+        <div class="score-parent">
+            <p>Score</p>
+                <div id="dealer-score"class="score">
+                </div>
+            </div>
+        <div id="dealer-hand" class="hand">
+        <h2>Dealer Hand</h2>
+        </div>
+        </div>
+    </section>
+
+    <script type="text/javascript">
+        function playOnePersonGame() {
+            var game = new BlackjackGame(10)
+            game.addPlayer(new Player(500))
+            game.playRound()
+        }
+    </script>
+</body>
+</html>

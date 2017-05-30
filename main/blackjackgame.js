@@ -1,4 +1,8 @@
+var dealerScore = document.getElementById("dealer-score")
+var userHand = document.getElementById("user-hand")
+
 class BlackjackGame {
+	
 	constructor(ante) {
 		this.deck
 		this.players = []
@@ -19,8 +23,10 @@ class BlackjackGame {
 
 	dealCards() {
 		this.dealerHand = new BlackjackHand(this.deck.dealCard(), this.deck.dealCard())
+		dealerScore.innerHTML = dealerHand.cards[0].print()
 		this.players.forEach(function(player) {
 			player.hand = new BlackjackHand(this.deck.dealCard(), this.deck.dealCard())
+			userHand.innerHTML = player.hand.showHand()
 		})
 	}
 
