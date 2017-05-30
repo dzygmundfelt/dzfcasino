@@ -9,9 +9,9 @@ class Card {
 	}
 
 	getValue() {
-		if(this.rank == 'JACK' || this.rank == 'QUEEN' || this.rank == 'KING') {
+		if(this.rank === 'JACK' || this.rank === 'QUEEN' || this.rank === 'KING') {
 			return 10;
-		} else if(this.rank == 'ACE') {
+		} else if(this.rank === 'ACE') {
 			return 11;
 		} else {
 			return parseInt(this.rank)

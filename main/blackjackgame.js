@@ -34,8 +34,8 @@ class BlackjackGame {
 	}
 
 	dealerAction() {
-		while(dealerHand.bestValue < 17) {
-			dealerHand.hit(this.deck.dealCard())
+		while(!this.dealerHand.busted && this.dealerHand.bestValue < 17) {
+			this.dealerHand.hit(this.deck.dealCard())
 		}
 	}
 

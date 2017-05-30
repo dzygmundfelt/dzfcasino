@@ -19,9 +19,9 @@ class BlackjackHand {
 
 	sumHand() {
 		var sum = 0
-		this.cards.forEach(function(card) {
-			sum += card.getValue()
-		})
+		for(var i = 0; i < this.cards.length; i++) {
+			sum += this.cards[i].getValue()
+		}
 		return sum
 	}
 

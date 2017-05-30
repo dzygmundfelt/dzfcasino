@@ -48,5 +48,11 @@ describe("deck", function() {
 	it("contains 52 cards", function() {
 		expect(thisDeck.cards.length).toBe(52);
 	});
+
+	it("is shuffled", function() {
+		var card = thisDeck.dealCard()
+		expect(card.rank).not.toBe('2')
+		expect(card.suit).not.toBe('SPADES')
+	});
 });
 
