@@ -29,4 +29,5 @@ describe("blackjackgame", function() {
 
 		expect(game.dealerHand.cards.length).toBeGreaterThan(2)
 	});
+
 });

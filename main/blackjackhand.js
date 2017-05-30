@@ -65,4 +65,12 @@ class BlackjackHand {
 		this.bestValue = best
 	}
 
+	showHand() {
+		var retstr = '| '
+		this.cards.forEach(function(card) {
+			retstr += card.print() + ' | '
+		})
+		return retstr
+	}
+
 }

@@ -55,4 +55,10 @@ describe("blackjack hand", function() {
 		expect(hand.bestValue).toBe(13)
 	});
 
+	it("shows hand properly", function() {
+		var hand = new BlackjackHand(new Card('3','CLUBS'), new Card('4','SPADES'))
+
+		expect(hand.showHand()).toBe('| 3 of CLUBS | 4 of SPADES | ')
+	});
+
 });
