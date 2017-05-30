@@ -16,14 +16,6 @@
 
     <h1>Blackjack</h1>
 
-    <section id="menu">
-      <ul>
-        
-        <li><button type="button" class="btn btn-primary" onclick="oddNumbers()">Hit</button></li>
-        <li><button type="button" class="btn btn-primary" onclick="squares()">Stay</button></li>
-      </ul>
-    </section>
-
     <section id="main">
         <div class="user-area">
         <div id="money"></div>
@@ -32,22 +24,18 @@
         <input type="button" id="hit" value="Hit">
         <input type="button" id="stand" value="Stand">
         <input type="button" id="replay" value="Play Again">
+        <ul>
+        <li><button type="button" class="btn btn-primary" onclick="oneToTen()">Example 2.1</button></li>
+        <li><button type="button" class="btn btn-primary" onclick="oddNumbers()">Example 2.2</button></li>
+        <li><button type="button" class="btn btn-primary" onclick="squares()">Example 2.3</button></li>
+        <li><button type="button" class="btn btn-primary" onclick="random4()">Example 2.4</button></li>
+      </ul>
         </div>
-        <div class="score-parent">
-            <p>Score</p>
-                <div id="user-score"class="score">
-                </div>
-            </div>
         <div id="user-hand" class="hand">
         <h2>User Hand</h2>
         </div>
         </div>
         <div class="dealer-area">
-        <div class="score-parent">
-            <p>Score</p>
-                <div id="dealer-score"class="score">
-                </div>
-            </div>
         <div id="dealer-hand" class="hand">
         <h2>Dealer Hand</h2>
         </div>
@@ -59,6 +47,7 @@
             var game = new BlackjackGame(10)
             game.addPlayer(new Player(500))
             game.playRound()
+            document.getElementById("replay").addEventListener("click", function(){game.playRound()}, false)
         }
     </script>
 </body>

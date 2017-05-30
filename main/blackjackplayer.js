@@ -1,4 +1,4 @@
-var moneyDiv = document.getElementById("money");
+
 
 class BlackjackPlayer {
 
@@ -9,7 +9,6 @@ class BlackjackPlayer {
 
 	buyIn(ante) {
 		this.chips -= ante
-		moneyDiv.innerHTML = this.chips
 	}
 
 	playerChoice() {
@@ -19,6 +18,5 @@ class BlackjackPlayer {
 
 	payOut(pot) {
 		this.chips += pot
-		moneyDiv.innerHTML = this.chips
 	}
 }
