@@ -20,24 +20,23 @@
         <div class="user-area">
         <div id="money"></div>
         <div id="user-buttons" class="controls">
-        <input type="button" id="playgame" value = "Play Game" onclick="playOnePersonGame()">
-        <input type="button" id="hit" value="Hit">
-        <input type="button" id="stand" value="Stand">
-        <input type="button" id="replay" value="Play Again">
-        <ul>
-        <li><button type="button" class="btn btn-primary" onclick="oneToTen()">Example 2.1</button></li>
-        <li><button type="button" class="btn btn-primary" onclick="oddNumbers()">Example 2.2</button></li>
-        <li><button type="button" class="btn btn-primary" onclick="squares()">Example 2.3</button></li>
-        <li><button type="button" class="btn btn-primary" onclick="random4()">Example 2.4</button></li>
+      <ul>
+        <li><button type="button" class="btn btn-primary" id="Play" onclick="playOnePersonGame()">Play Game</button></li>
+        <li><button type="button" class="btn btn-primary" id="Hit" disabled="true">Hit</button></li>
+        <li><button type="button" class="btn btn-primary" id="Stay" disabled="true">Stay</button></li>
       </ul>
         </div>
-        <div id="user-hand" class="hand">
         <h2>User Hand</h2>
+        <div id="user-hand" class="hand">
+        </div>
+        <div id="user-score">
         </div>
         </div>
+        <h2>Dealer Hand</h2>
         <div class="dealer-area">
         <div id="dealer-hand" class="hand">
-        <h2>Dealer Hand</h2>
+        </div>
+        <div id="dealer-score">
         </div>
         </div>
     </section>
@@ -45,10 +44,13 @@
     <script type="text/javascript">
         function playOnePersonGame() {
             var game = new BlackjackGame(10)
-            game.addPlayer(new Player(500))
+            game.addPlayer(new BlackjackPlayer(500))
             game.playRound()
-            document.getElementById("replay").addEventListener("click", function(){game.playRound()}, false)
         }
     </script>
+    <script src="./main/deck.js"></script>
+    <script src="./main/blackjackhand.js"></script>
+    <script src="./main/blackjackplayer.js"></script>
+    <script src="./main/blackjackgame.js"></script>
 </body>
 </html>

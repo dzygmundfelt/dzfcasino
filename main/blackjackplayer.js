@@ -11,11 +11,6 @@ class BlackjackPlayer {
 		this.chips -= ante
 	}
 
-	playerChoice() {
-		this.hand.toString()
-		return prompt("Would you like to hit or stay?")
-	}
-
 	payOut(pot) {
 		this.chips += pot
 	}

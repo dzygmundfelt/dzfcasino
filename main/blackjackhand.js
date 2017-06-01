@@ -1,6 +1,6 @@
 class BlackjackHand {
 
-	constructor(card1,card2) {
+	constructor(card1, card2) {
 		this.cards = []
 		this.cards.push(card1)
 		this.cards.push(card2)
