@@ -1,16 +1,17 @@
 class BlackjackGame {
-	
+
 	constructor(ante) {
 		this.deck
 		this.players = []
+		this.finalPlayer
 		this.dealerHand
 		this.ante = ante
+		this.hitButton
+		this.stayButton
 		this.dealerHandDisplay = document.getElementById("dealer-hand")
 		this.userHandDisplay = document.getElementById("user-hand")
 		this.dealerScoreDisplay = document.getElementById("dealer-score")
 		this.userScoreDisplay = document.getElementById("user-score")
-		this.hitButton = document.getElementById("Hit")
-		this.stayButton = document.getElementById("Stay")
 	}
 
 	addPlayer(player) {
@@ -19,10 +20,16 @@ class BlackjackGame {
 
 	playRound() {
 		this.deck = new Deck()
+		this.finalPlayer = this.players[this.players.length-1]
+		this.setButtons()
 		this.dealCards()
 		this.action()
 		this.resolve()
+	}
 
+	setButtons() {
+		this.hitButton = document.getElementById("Hit")
+		this.stayButton = document.getElementById("Stay")
 	}
 
 	dealCards() {
@@ -39,22 +46,32 @@ class BlackjackGame {
 
 	action() {
 		let self = this
-		this.hitButton.disabled = false
-		this.stayButton.disabled = false
 		this.players.forEach(function(player) {
-			self.makeChoices(player)
-		})
-		this.dealerAction()
+			self.hitButton.disabled = 'false'
+			self.stayButton.disabled = 'false'
+			self.playerTurn(player)}
+		)
 	}
 
-	makeChoices(player) {
+	playerTurn(player) {
+		let self = this
 		this.hitButton.onclick = function(player) {
-			player.hand.hit(this.deck.dealCard())
+			player.hand.hit(self.deck.dealCard())
 		}
 		this.stayButton.onclick = function() {
-			document.getElementById("Hit").disabled = true
-			document.getElementById("Stay").disabled = true
+			callNextPlayer(player)
 		}
+	}
+
+	callNextPlayer(player) {
+		if(player === this.finalPlayer) {
+			this.dealerAction()
+		}
+		let playerIndex = 0
+		while(this.players[playerIndex] !== player) {
+			playerIndex++
+		}
+		playerTurn(this.players[++playerIndex])
 	}
 
 	dealerAction() {
@@ -74,9 +91,16 @@ class BlackjackGame {
 				player.payOut(self.ante*2)
 				self.userScoreDisplay.innerHTML = "Player wins with a score of " + player.hand.bestValue
 			} else {
-				self.dealerScoreDisplay.innerHTML = "Dealer wins with a score of " + self.dealerHand.bestValue 
+				self.dealerScoreDisplay.innerHTML = "Dealer wins with a score of " + self.dealerHand.bestValue
 			}
 		})
 	}
+
+	// clear() {
+	// 	document.getElementById("dealer-hand")
+	// 	this.userHandDisplay = document.getElementById("user-hand")
+	// 	this.dealerScoreDisplay = document.getElementById("dealer-score")
+	// 	this.userScoreDisplay = document.getElementById("user-score")
+	// }
 
 }
